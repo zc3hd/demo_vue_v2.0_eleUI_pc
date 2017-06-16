@@ -114,7 +114,7 @@ axios.post('/user', {
 【注意：】es6语法方法内部的this指向是当前函数的作用域的this，bind()方法直接可以改变函数内部的this指向。
 ```
 
-### 2.0项目
+### 2.项目过程
 
 * 引入公用的less文件
 
@@ -176,8 +176,7 @@ export default {
 </style>
 ```
 
-
-* vue信息提醒：this.$message('click on item ' + ...);
+* UI信息提醒：this.$message('click on item ' + ...);
 
 ```
 【下拉菜单】
@@ -195,9 +194,26 @@ export default {
 methods: {
   // 会自动找到 command 属性
   handleCommand(command) {
-    // 信息提醒
+    【信息提醒】
     this.$message('click on item ' + command);
   }
 }
 ```
 
+* 滚动条的优化
+
+```
+在页面主页引入文件
+<script src='/libs/jquery/jquery.js'></script>
+<script src='/libs/jquery.nicescroll-master/dist/jquery.nicescroll.js'></script>
+
+使用：
+$("#home").niceScroll({
+  cursorwidth: 12,
+  cursoropacitymin: 0.4,
+  cursorcolor: '#6e8cb6',
+  cursorborder: 'none',
+  cursorborderradius: 4,
+  autohidemode: 'leave'
+});
+```

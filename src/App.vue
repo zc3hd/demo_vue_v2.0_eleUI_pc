@@ -39,7 +39,7 @@ export default {
             path: '',
             items: [{
               id: "1-1",
-              path: '/home',
+              path: '/user',
               name: '用户管理',
             }, {
               id: "1-2",
@@ -89,15 +89,6 @@ export default {
   },
   mounted() {},
 }
-
-// <el-menu id="lots" class="el-menu-vertical-demo" theme="dark" :router="true" :unique-opened='true' @open="handleOpen">
-//   <!-- 第一个菜单 -->
-//   <el-submenu v-for="(val,Index) in menu.lots" :key="Index" v-if="!val.path" :index="val.id">
-//     <template slot="title"><i class="el-icon-message"></i>{{val.name}}</template>
-//     <el-menu-item v-for="(item_val,item_index) in val.items" :index="item_val.id" :route='{path:item_val.path}'>{{item_val.name}}</el-menu-item>
-//   </el-submenu>
-//   <!-- <el-menu-item v-for="(Val,Index) in menu.one" :index='Val.id'><i class="el-icon-message"></i>{{Val.name}}</el-menu-item> -->
-// </el-menu>
 </script>
 <!-- 导航菜单 -->
 <style scoped lang="less">

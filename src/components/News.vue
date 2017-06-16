@@ -9,7 +9,6 @@ export default {
   name: 'news',
   data() {
     return {
-      msg: 'news'
     }
   },
   components:{

@@ -131,6 +131,14 @@ export default {
     },
   },
   mounted() {
+    $("#home").niceScroll({
+      cursorwidth: 12,
+      cursoropacitymin: 0.4,
+      cursorcolor: '#6e8cb6',
+      cursorborder: 'none',
+      cursorborderradius: 4,
+      autohidemode: 'leave'
+    });
     this.timer = setInterval(function() {
       if (this.percentage == 100) {
         this.status = 'success';
@@ -142,7 +150,8 @@ export default {
         this.status = 'exception';
       }
       this.percentage++
-    }.bind(this), 1000)
+    }.bind(this), 1000);
+
   },
   beforeDestroy: function() {
     clearInterval(this.timer);
@@ -161,7 +170,7 @@ export default {
   box-sizing: border-box;
   padding-top: @header_h+10px;
   // position: relative;
-  overflow-x:auto; 
+  overflow-x: auto;
   >.cc_form {
     padding-left: 30px;
     padding-right: 50px;
