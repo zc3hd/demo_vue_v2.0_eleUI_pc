@@ -1,4 +1,4 @@
-# 【vue】element-ui learning summary~c~
+
 
 ### 1.说明
 
@@ -132,13 +132,13 @@ axios.post('/user', {
 
 ### 3.demo 实战
 
-#### 3.1配置公用样式的less文件
+#### 3.1 配置公用样式的less文件
 
 ```
 @import '../css/commom/main.less';
 ```
 
-#### 32.eleUI的导航使用
+#### 3.2 eleUI的导航使用
 
 * 1.因为项目需求左侧为导航菜单，右侧为显示区，从后台返回来的左侧导航数据，需要指定路由。
 
@@ -162,19 +162,19 @@ axios.post('/user', {
 </el-menu>
 ```
 
-* 4.【!】eleUI导航路由的配置
+#### 3.3 导航路由配置
 
-* 4.1 官方配置：【官方的说法，我自己理解就是开启router这个属性就可以在index上配置路由，也就是不开启这个属性的话，还是在每一项的route上进行路由】
+* 官方配置：【官方的说法，我自己理解就是开启router这个属性就可以在index上配置路由，也就是不开启这个属性的话，还是在每一项的route上进行路由】
 
 ![](./webapp/readme_img/004.jpg)
 
 ![](./webapp/readme_img/005.jpg)
 
-* 4.2 不知道是我理解的不对还是哪写错了，按照官方的写法用不开启router这个功能，也就是在每一项的route上设置路由，就不行。最后我开启路由设置后，在每一项上设置index和route都可以了。我的天呐~~
+* 实践：不知道是我理解的不对还是哪写错了，按照官方的写法用不开启router这个功能，也就是在每一项的route上设置路由，就不行。最后我开启路由设置后，在每一项上设置index和route都可以了。我的天呐~~
 
 ![](./webapp/readme_img/007.jpg)
 
-* 5.【!】提取头部公共组件
+#### 3.4 提取公共头部
 
 ```
 【****其他组件】
@@ -231,8 +231,9 @@ export default {
 </style>
 ```
 
-* 6.【!】组件中的定时器，实时请求
-* 6.1 Home.vue组件中，编译完成后开启进度条,切换路由时，就是销毁这个组件视图，要在beforeDestroy清除定时器。地图的模块函数用面向对象写在单独的模块中，在vue中只不过是使用。
+#### 3.5 组件中的实时请求
+
+* Home.vue组件中，编译完成后开启进度条,切换路由时，就是销毁这个组件视图，要在beforeDestroy清除定时器。地图的模块函数用面向对象写在单独的模块中，在vue中只不过是使用。
 
 ```
   mounted() {
@@ -255,7 +256,7 @@ export default {
   },
 ```
 
-* 6.1 Moniter.vue组件中，编译完成后执行地图的模块init()函数。
+* Moniter.vue组件中，编译完成后执行地图的模块init()函数。
 
 ```
 <script>
@@ -329,8 +330,9 @@ export default {
 </script>
 ```
 
-* 7.其他
-* 7.1 eleUI信息提醒：this.$message('click on item ' + ...);
+#### 3.6 其他
+
+* eleUI信息提醒：this.$message('click on item ' + ...);
 
 ```
 【下拉菜单】
@@ -354,14 +356,14 @@ methods: {
 }
 ```
 
-* 7.2 JQ插件--滚动条的优化
+* JQ插件--滚动条的优化
 
 ```
-在页面主页引入文件
+【在页面主页引入文件】
 <script src='/libs/jquery/jquery.js'></script>
 <script src='/libs/jquery.nicescroll-master/dist/jquery.nicescroll.js'></script>
 
-使用：
+【使用：】
 $("#home").niceScroll({
   cursorwidth: 12,
   cursoropacitymin: 0.4,

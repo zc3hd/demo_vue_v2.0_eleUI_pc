@@ -1,0 +1,568 @@
+<!doctype HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>详情页</title>
+<style>
+
+body {
+font-family: Tahoma;
+font-size: 10pt;
+/*line-height: 170%;*/
+padding-top: 10px;
+margin:0px;
+}
+/*------------------------------------------------------------侧边导航*/
+nav {
+background: gray;
+color: white;
+text-decoration: none;
+overflow-x: hidden;
+overflow-y: auto;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+width: 200px;
+}
+nav a {
+	text-decoration: none;
+	color: white;
+}
+/*-------------------------------------------------------------标头*/
+@keyframes move {
+	0% {
+		text-shadow: 5px 0px 3px rgba(0,0,0,0.5);
+		transform: perspective(2000px) rotateY(0deg);
+	}
+	25% {
+		text-shadow: 20px 0px 5px rgba(0,0,0,.3);
+		transform: perspective(2000px) rotateY(40deg);
+	}
+	50% {
+		text-shadow: 5px 0px 5px rgba(0,0,0,.5);
+		transform: perspective(2000px) rotateY(0deg);
+	}
+	75% {
+		text-shadow: -20px 0px 5px rgba(0,0,0,.3);
+		transform: perspective(2000px) rotateY(-40deg);
+	}
+	100% {
+		text-shadow: 5px 0px 3px rgba(0,0,0,0.5);
+		transform: perspective(2000px) rotateY(0deg);
+	}
+}
+
+@keyframes moveX {
+	0% {
+		text-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+		transform: perspective(2000px) rotateX(0deg);
+	}
+	25% {
+		text-shadow: 0px 10px 5px rgba(0,0,0,.3);
+		transform: perspective(2000px) rotateX(30deg);
+	}
+	50% {
+		text-shadow: 0px 0px 5px rgba(0,0,0,.5);
+		transform: perspective(2000px) rotateX(0deg);
+	}
+	75% {
+		text-shadow: 0px 10px 5px rgba(0,0,0,.3);
+		transform: perspective(2000px) rotateX(-30deg);
+	}
+	100% {
+		text-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+		transform: perspective(2000px) rotateX(0deg);
+	}
+}
+
+
+header {
+padding-top: 10px;
+padding-left: 220px;
+font-size: 18px;
+position: absolute;
+/*margin-bottom:30px;*/
+text-shadow: 5px 0px 3px rgba(0,0,0,.3);
+color: black;
+}
+
+header h1 {
+	
+	margin:0px;
+	padding: 0px;
+	animation: move 6s forwards infinite;
+}
+/*----------------------------------------------------------主题*/
+article {
+margin-top: 80px;
+padding-left: 220px;
+}
+
+@keyframes imgMoveOver {
+	0% {
+		/*text-shadow: 5px 5px 3px rgba(0,0,0,0.5);*/
+		transform: scale(1) ;
+	}
+	100% {
+		/*text-shadow: 5px 5px 3px rgba(0,0,0,0.5);*/
+		/*transform: perspective(2000px) rotateY(30deg);*/
+		transform: scale(1.01) translateY(-2%);
+	}
+}
+
+@keyframes imgMoveOut {
+	0% {
+		/*text-shadow: 5px 5px 3px rgba(0,0,0,0.5);*/
+		
+		transform: scale(1.1) translateY(-5%);
+	}
+	100% {
+		/*text-shadow: 5px 5px 3px rgba(0,0,0,0.5);*/
+		/*transform: perspective(2000px) rotateY(30deg);*/
+		transform: scale(1) ;
+	}
+}
+
+img {
+	/*position: relative;*/
+	width: 900px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: Orange;
+	transform-origin:left top;
+}
+img:hover {
+	animation: imgMoveOver 0.5s forwards;
+}
+/*段落*/
+h3,h4{
+	/*background-color: rgba(0,0,0,.3);*/
+	background-image: linear-gradient(to right, rgba(0,0,0,1) 30%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0.2) 75%, white 100%);
+/*	width: 500px;*/
+	color: white;
+	font-size: 22px;
+	padding-left: 10px;
+}
+h4{
+	width: 50%;
+	font-size: 18px;
+	margin-left: 5px;
+}
+pre {
+	background-color: black;
+}
+pre code {
+	color: yellow;
+	font-size: 16px;
+	font-weight: 500;
+}
+/*---------------------------------------------------------底部*/
+footer {
+padding-top: 10px;
+padding-left: 220px;
+padding-bottom: 10px;
+background-color: black;
+color: white;
+}
+footer h3 {
+	color: white;
+	background-color:transparent;
+	background-image: linear-gradient(to right, black 0%,  black 100%);
+}
+</style>
+</head>
+<body>
+
+<nav>
+<ul>
+<li class="level3"><a href="#0.1">1.说明</a></li><li class="level3"><a href="#0.2">2.eleUI 基础学习</a></li><li class="level3"><a href="#0.3">3.demo 实战</a></li><li class="level4"><a href="#0.3.1">3.1 配置公用样式的less文件</a></li><li class="level4"><a href="#0.3.2">3.2 eleUI的导航使用</a></li><li class="level4"><a href="#0.3.3">3.3 导航路由配置</a></li><li class="level4"><a href="#0.3.4">3.4 提取公共头部</a></li><li class="level4"><a href="#0.3.5">3.5 组件中的实时请求</a></li><li class="level4"><a href="#0.3.6">3.6 其他</a></li><li class="level3"><a href="#0.4">开源协议</a></li></ul>
+
+</nav>
+
+<header>
+<h1 id="-vue-element-ui-learning-summary">【vue】element-ui learning summary</h1>
+
+</header>
+
+<article>
+<h3 id="0.1">1.说明</h3>
+<ul>
+<li>该项目是学习完eleUI,写了个适合我们公司的项目结构的demo。</li>
+<li>项目的输出都是在webapp文件夹下面。公共的脚本JS放在libs下面，图片放在images。</li>
+</ul>
+<p><img src="./webapp/readme_img/001.jpg" alt=""></p>
+<ul>
+<li><p>如何配置到webapp为开发环境的根目录及输出的目录配置看--<a href="https://github.com/zc3hd/demo_webpack_v2.0_jq_kit_17-6-9">zc3hd/demo_webpack_v2.0_jq_kit_17-6-9</a></p>
+</li>
+<li><p>demo_webpack_v2.0_jq_kit_17-6-9是为了符合我公司的开发目录和结构的。该demo是全部是自己完成，配置了路由，按道理应该是各自负责各自的组件模块进行开发，然后统一打包。由于 demo_webpack_v2.0_jq_kit_17-6-9 这个配置方式对于各个开发自己组件比较适合，因此会出现下面的问题：</p>
+</li>
+<li>开发中发现的问题：如果团队使用vue进行开发，最终所有的组件的vue文件都会被打包到一个脚本下。相对来说加载时间会很长。目前想到的办法就是完全不用webpack进行对.vue文件打包，也就是不用vue-loader的（基础）版本进行开发，组件手动配置webpack对css和JS进行压缩和混淆就行。此处，该案例还是使用vue-loader进行打包。</li>
+<li>该demo把前面写的地图的模块也融合到vue中了，具体还是采用地图面向对象写了一个模块，把构造函数实例化的挂载到moniter.vue组件上的属性，从而可以控制地图的实时数据请求的开启和关闭定时器的请求。</li>
+<li>demo用户列表增删改可用，地图监控可用。</li>
+<li>用户模块，搜索不可用;右上角用户的信息的退出、编辑没有做。</li>
+</ul>
+<p><img src="./webapp/readme_img/009.jpg" alt=""></p>
+<h3 id="0.2">2.eleUI 基础学习</h3>
+<ul>
+<li><p>可以使用BS进行布局。所以可以在index.html页面中引入bs的css文件，不要在组件中引入，不然每次编译都把大文件去编译了。</p>
+</li>
+<li><p>ele_UI引入组件和样式，注册组件</p>
+</li>
+</ul>
+<pre><code class="lang-js">import ElementUI from &#39;element-ui&#39;
+import &#39;element-ui/lib/theme-default/index.css&#39;
+
+Vue.use(ElementUI);</code></pre>
+<ul>
+<li>组件的使用,布局容器：eleui提供布局的组件，里面是该怎么写怎么写，有时候需要重新修改样式</li>
+</ul>
+<pre><code class="lang-html">&lt;div id=&quot;home&quot;&gt;
+    &lt;el-row&gt;
+        &lt;el-col :span=&quot;24&quot;&gt;
+          &lt;div class=&quot;grid-content bg-purple-dark&quot; type=&quot;warning&quot;&gt;asd&lt;/div&gt;
+        &lt;/el-col&gt;
+    &lt;/el-row&gt;
+&lt;/div&gt;</code></pre>
+<ul>
+<li>less在.vue文件中的使用：(注意scoped属性，有时候标识为scoped的话，组件中没有写的样式)</li>
+</ul>
+<pre><code class="lang-less">&lt;style scoped lang=&quot;less&quot;&gt;
+#home {
+  .grid-content.bg-purple-dark {
+    border-radius: 4px;
+    min-height: 36px;
+    background-color: #58B7FF;
+  }
+  .el-date-editor.el-input {
+    width: 100%;
+  }
+  .cc_form {
+    margin-top: 20px;
+  }
+}
+&lt;/style&gt;</code></pre>
+<ul>
+<li>按需引入eleUI的组件</li>
+</ul>
+<pre><code>【1.安装】
+npm install babel-plugin-component -D
+
+【2.配置】将 .babelrc 修改为：
+{
+  &quot;presets&quot;: [
+    [&quot;es2015&quot;, { &quot;modules&quot;: false }]
+  ],
+  &quot;plugins&quot;: [[&quot;component&quot;, [
+    {
+      &quot;libraryName&quot;: &quot;element-ui&quot;,
+      &quot;styleLibraryName&quot;: &quot;theme-default&quot;
+    }
+  ]]]
+}
+
+【3.使用】
+import Vue from &#39;vue&#39;
+import { Button, Select } from &#39;element-ui&#39;【es6】
+import App from &#39;./App.vue&#39;
+
+Vue.component(Button.name, Button)
+Vue.component(Select.name, Select)
+
+// Vue.use(Button)
+// Vue.use(Select)
+
+【4.把需要提取的组件作为一个文件进行设置】
+import Vue from &#39;vue&#39;
+import {Button,Radio,DatePicker..} from &#39;element-ui&#39;
+
+Vue.use(Button)
+
+【5.引入组件的名称】
+来源就是配置的theme-default文件夹下面的组件样式的名称
+
+【6.ele组件的绑定】
+eleUI组件可以添加原生事件的绑定。--@click=&#39;get&#39;，组件的属性绑定也是按照vue的属性绑定！！！
+
+【7.自定义组件的事件代理】
+相对于上一条，如果自定义组件里包含eleUI的组件，在自定义组件的上面绑定事件为
+@click.native = &#39;get&#39;
+里面的每个组件都可以代理触发父级组件所绑定的事件，</code></pre>
+<ul>
+<li>交互axios</li>
+</ul>
+<pre><code>npm install axios 【引入过来就是个函数，基于promise】
+
+axios.post(&#39;/user&#39;, {
+    firstName: &#39;Fred&#39;,
+    lastName: &#39;Flintstone&#39;
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });</code></pre>
+<ul>
+<li>注意：es6语法方法内部的this指向是当前函数的作用域的this，bind()方法直接可以改变函数内部的this指向。</li>
+</ul>
+<h3 id="0.3">3.demo 实战</h3>
+<h4 id="0.3.1">3.1 配置公用样式的less文件</h4>
+<pre><code>@import &#39;../css/commom/main.less&#39;;</code></pre>
+<h4 id="0.3.2">3.2 eleUI的导航使用</h4>
+<ul>
+<li>1.因为项目需求左侧为导航菜单，右侧为显示区，从后台返回来的左侧导航数据，需要指定路由。</li>
+</ul>
+<p><img src="./webapp/readme_img/002.jpg" alt=""></p>
+<ul>
+<li>2.确认了需求及需要返回的数据，再次确认该组件需要写在App.vue根组件中</li>
+</ul>
+<p><img src="./webapp/readme_img/003.jpg" alt=""></p>
+<ul>
+<li>3.【!】一级菜单和二级菜单的渲染，在不同的项上面使用了v-if=&quot;!val.path&quot;和v-else</li>
+</ul>
+<pre><code class="lang-html">&lt;el-menu id=&quot;lots&quot; class=&quot;el-menu-vertical-demo&quot; theme=&quot;dark&quot; :router=&quot;true&quot; :unique-opened=&#39;true&#39; @open=&quot;handleOpen&quot;&gt;
+  &lt;div v-for=&quot;(val,Index) in menu.lots&quot; :key=&quot;Index&quot;&gt;
+    &lt;el-submenu v-if=&quot;!val.path&quot; :index=&quot;val.id&quot;&gt;
+      &lt;template slot=&quot;title&quot;&gt;&lt;i :class=&quot;val.logo&quot;&gt;&lt;/i&gt;{{val.name}}&lt;/template&gt;
+      &lt;el-menu-item v-for=&quot;(item_val,item_index) in val.items&quot; :index=&quot;item_val.id&quot; :route=&#39;{path:item_val.path}&#39;&gt;{{item_val.name}}&lt;/el-menu-item&gt;
+    &lt;/el-submenu&gt;
+    &lt;el-menu-item v-else :index=&#39;val.id&#39; :route=&#39;{path:val.path}&#39;&gt;&lt;i :class=&quot;val.logo&quot;&gt;&lt;/i&gt;{{val.name}}&lt;/el-menu-item&gt;
+  &lt;/div&gt;
+&lt;/el-menu&gt;</code></pre>
+<h4 id="0.3.3">3.3 导航路由配置</h4>
+<ul>
+<li>官方配置：【官方的说法，我自己理解就是开启router这个属性就可以在index上配置路由，也就是不开启这个属性的话，还是在每一项的route上进行路由】</li>
+</ul>
+<p><img src="./webapp/readme_img/004.jpg" alt=""></p>
+<p><img src="./webapp/readme_img/005.jpg" alt=""></p>
+<ul>
+<li>实践：不知道是我理解的不对还是哪写错了，按照官方的写法用不开启router这个功能，也就是在每一项的route上设置路由，就不行。最后我开启路由设置后，在每一项上设置index和route都可以了。我的天呐~~</li>
+</ul>
+<p><img src="./webapp/readme_img/007.jpg" alt=""></p>
+<h4 id="0.3.4">3.4 提取公共头部</h4>
+<pre><code>【****其他组件】
+import ccHeader from &#39;./com_compts/main_header.vue&#39;
+// 注意自定义组件的名称不要和已有组件进行冲突
+
+export default {
+  name: &#39;news&#39;,
+  data() {
+    return {
+      msg: &#39;news&#39;
+    }
+  },
+  components:{
+    ccHeader
+  }
+}
+&lt;style scoped lang=&quot;less&quot;&gt;
+@import &#39;../css/commom/main.less&#39;;
+#home {
+  height: 100%;
+  background-color: #ddd;
+  【1.需要设置borderbox--弹性盒子】
+  box-sizing: border-box;
+  【2.less语法，可以在设置的基础上加10px】
+  padding-top: @header_h+10px;
+  【3.设置竖向滚动条】
+  overflow-x:auto; 
+  &gt;.cc_form {
+    padding-left: 30px;
+    padding-right: 50px;
+  }
+}
+&lt;/style&gt;
+
+
+【****头部组件】
+&lt;template&gt;
+  &lt;div id=&quot;main_header&quot;&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;style scoped lang=&quot;less&quot;&gt;
+@import &#39;../../css/commom/main.less&#39;;
+#main_header {
+  【一旦位置固定的话，宽度就是直接取屏幕的宽了。因为该组件上面的父级选择的20列的宽，宽度83.3333%，所以下面为83.3333%】
+  width: 83.3333333%;
+  min-height: @header_h;
+  【这里需要设置固定定位】
+  position: fixed;
+  top:0;
+  【层级需要设置，不然会和其他组件的其他eleUI组件叠加在一起】
+  z-index: 10;
+}
+&lt;/style&gt;</code></pre>
+<h4 id="0.3.5">3.5 组件中的实时请求</h4>
+<ul>
+<li>Home.vue组件中，编译完成后开启进度条,切换路由时，就是销毁这个组件视图，要在beforeDestroy清除定时器。地图的模块函数用面向对象写在单独的模块中，在vue中只不过是使用。</li>
+</ul>
+<pre><code>  mounted() {
+    this.timer = setInterval(function() {
+      if (this.percentage == 100) {
+        this.status = &#39;success&#39;;
+        this.percentage = 0;
+      }
+      if (this.percentage &lt;= 30) {
+        this.status = &#39;success&#39;;
+      } else {
+        this.status = &#39;exception&#39;;
+      }
+      this.percentage++
+    }.bind(this), 1000);
+
+  },
+  beforeDestroy: function() {
+    clearInterval(this.timer);
+  },</code></pre>
+<ul>
+<li>Moniter.vue组件中，编译完成后执行地图的模块init()函数。</li>
+</ul>
+<pre><code>&lt;script&gt;
+export default {
+  name: &#39;map&#39;,
+  data() {
+    return {
+      // 一会去挂载实例化的对象
+      module: null,
+    }
+  },
+  methods: {
+    // 模块的数据初始化
+    argument_init: function() {
+      // --------------------------------宏观模式的围栏
+      // 收集围栏的所有的点---为了最优视角
+      this.module.f_big_arr = [];
+      // 宏观模式的循环时间
+      this.module.f_big_timer = null;
+      // 海星围栏的收集
+      this.module.f_big_dom_arr = [];
+      // 围栏最优一次
+      this.module.f_view = true;
+      // 宏观围栏mass的大小
+      this.module.f_size = null;
+      // mass加载 第一次进行加载，第二次注入数据
+      this.module.f_first_load = true;
+      this.module.f_small_timer = null;
+
+      // ---------------------------------自行车
+      // 海星的收集
+      this.module.b_dom_arr = [];
+      // 自行车的定时器
+      this.module.b_timer = null;
+      // 宏观围栏mass的大小
+      this.module.b_size = null;
+      // mass加载 第一次进行加载，第二次注入数据
+      this.module.b_first_load = true;
+
+      // ---------------------------------开关
+      // fence 点击开关--没有点击
+      this.module.f_mass_key = false;
+
+      //这个参数证明围栏已经到了3-19级--即使发出请求也不进行打点
+      this.module.f_wheel_key = false;
+
+      // 微观数据启动标记---默认没有启动
+      this.module.f_small_key = false;
+    },
+    // 清除所有的定时器
+    // 该处是地图的模块写的不够完善，所以不能进行更好的清除地图的定时器，和vue切换路由是没有关系的
+    clear_init:function () {
+      var me = this.module;
+      clearTimeout(me.f_big_timer);
+      clearTimeout(me.b_timer);
+    },
+  },
+  // 编译完成后开启实时请求
+  mounted() {
+    this.module = new diyBdMap({
+      id: &#39;container&#39;
+    });
+    this.argument_init();
+    this.module.init();
+  },
+  // 切换路由时关闭定时器。
+  beforeDestroy: function() {
+    this.clear_init();
+  },
+}
+&lt;/script&gt;</code></pre>
+<h4 id="0.3.6">3.6 其他</h4>
+<ul>
+<li>eleUI信息提醒：this.$message(&#39;click on item &#39; + ...);</li>
+</ul>
+<pre><code>【下拉菜单】
+&lt;el-dropdown @command=&quot;handleCommand&quot;&gt;
+  &lt;span class=&quot;el-dropdown-link&quot;&gt;
+  {{name}}&lt;i class=&quot;el-icon-caret-bottom el-icon--right&quot;&gt;&lt;/i&gt;
+  &lt;/span&gt;
+  &lt;el-dropdown-menu slot=&quot;dropdown&quot; class=&#39;header_user_info&#39;&gt;
+    &lt;el-dropdown-item command=&quot;1&quot;&gt;信息编辑&lt;/el-dropdown-item&gt;
+    &lt;el-dropdown-item command=&quot;2&quot;&gt;密码修改&lt;/el-dropdown-item&gt;
+    &lt;el-dropdown-item command=&quot;3&quot;&gt;退出&lt;/el-dropdown-item&gt;
+  &lt;/el-dropdown-menu&gt;
+&lt;/el-dropdown&gt;
+
+methods: {
+  // 会自动找到 command 属性
+  handleCommand(command) {
+    【信息提醒】
+    this.$message(&#39;click on item &#39; + command);
+  }
+}</code></pre>
+<ul>
+<li>JQ插件--滚动条的优化</li>
+</ul>
+<pre><code>【在页面主页引入文件】
+&lt;script src=&#39;/libs/jquery/jquery.js&#39;&gt;&lt;/script&gt;
+&lt;script src=&#39;/libs/jquery.nicescroll-master/dist/jquery.nicescroll.js&#39;&gt;&lt;/script&gt;
+
+【使用：】
+$(&quot;#home&quot;).niceScroll({
+  cursorwidth: 12,
+  cursoropacitymin: 0.4,
+  cursorcolor: &#39;#6e8cb6&#39;,
+  cursorborder: &#39;none&#39;,
+  cursorborderradius: 4,
+  autohidemode: &#39;leave&#39;
+});</code></pre>
+
+</article>
+<footer>
+<h3 id="0.4">开源协议</h3>
+<p>本程序基于MIT协议开源。</p>
+<pre><code>Copyright (c) cc.</code></pre>
+
+</footer>
+</body>
+
+<script>
+	var div = document.createElement("div"); 
+	var body = document.getElementsByTagName('body')[0];
+	console.log(body);
+div.id = 'back_index';	
+div.style.width = '200px';
+div.style.height = '200px';
+div.style.backgroundImage = "url(./back_index.png)";
+div.style.backgroundSize = 'cover';
+div.style.position = 'fixed';
+div.style.left = '0px';
+div.style.bottom = '20px';
+body.appendChild(div);
+document.write(div);
+div.onmouseover = function () {
+	/* body... */
+	div.style.animation = 'imgMoveOver 0.5s forwards';
+};
+div.onmouseout = function () {
+	/* body... */
+	div.style.animation = 'imgMoveOut 0.5s forwards';
+};
+div.onclick = function () {
+	/* body... */
+	window.location.href = "https://zc3hd.github.io/";
+};
+
+</script>
+
+</html>
