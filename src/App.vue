@@ -27,7 +27,7 @@ export default {
   name: 'app',
   data() {
     return {
-      logo: '北斗导航',
+      logo: 'CC demo',
       menu: {
         // 多级菜单
         lots: [
@@ -43,7 +43,7 @@ export default {
               name: '用户管理',
             }, {
               id: "1-2",
-              path: '/news',
+              path: '/undone',
               name: '权限管理',
             }, ]
           },
@@ -51,32 +51,21 @@ export default {
           {
             id: "2",
             name: '地图监控',
-            path: '/news',
+            path: '/Moniter',
             logo: 'el-icon-search',
           },
           // 围栏管理
           {
             id: "3",
             name: '围栏设置',
-            path: '/home',
+            path: '/undone',
             logo: 'el-icon-setting',
-          }
-        ],
-        // 一级菜单
-        one: [
-          // 监控管理
-          {
-            id: 2,
-            name: '地图监控',
-            path: '/news',
-            logo: 'el-icon-message',
           },
-          // 围栏管理
           {
-            id: 3,
-            name: '围栏设置',
+            id: "4",
+            name: 'test page',
             path: '/home',
-            logo: 'el-icon-message',
+            logo: 'el-icon-loading',
           }
         ],
       }

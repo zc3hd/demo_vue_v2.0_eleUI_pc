@@ -11,11 +11,10 @@ Vue.use(ElementUI);
 import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 import routes from './router.config.js'
+// 这个属性必须叫--routes
 const router=new VueRouter({
 	routes
 });
-
-
 
 
 
