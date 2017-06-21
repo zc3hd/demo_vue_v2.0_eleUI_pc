@@ -130,6 +130,46 @@ axios.post('/user', {
 
 * 注意：es6语法方法内部的this指向是当前函数的作用域的this，bind()方法直接可以改变函数内部的this指向。
 
+* 组件的注册：Vue.use(Button);
+
+```
+【1.目录结构】
+|-loading文件夹
+|---index.js
+|---loading.vue
+
+【2.loading.vue】
+<template>
+  <div class="loading-box">
+    {{msg}}
+  </div>
+</template>
+<script>
+  export default{
+    data(){
+      return {
+        msg:'Loading...^_^'
+      }
+    }
+  }
+</script>
+<style scoped>
+  .loading-box{
+  }
+</style>
+
+【3.index.js】
+import LoadingComponent from './Loading.vue'
+
+const Loading = {
+  install: function(Vue) {
+    【注意这里注册的组件的名字就是在其他组件使用的地方的名字--Loading】
+    Vue.component('Loading', LoadingComponent)
+  }
+};
+export default Loading
+```
+
 ### 3.demo 实战
 
 #### 3.1 配置公用样式的less文件
